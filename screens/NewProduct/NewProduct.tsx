@@ -2,30 +2,25 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { styles } from './NewProduct.style';
-
-interface Product {
-  name: string;
-  price: string;
-  avilibleFrom: Date;
-}
+import { Product } from '@/types/Product';
+import { formatDate } from '@/utils/new-product-utilis/new-product-utilis';
 
 const NewProduct = () => {
   const [listProduct, setListProduct] = useState<Product[]>([]);
-  const [price, setPrice] = useState('');
-  const [productName, setProductName] = useState('');
+  const [price, setPrice] = useState<string>('');
+  const [productName, setProductName] = useState<string>('');
   const [avilibleFrom, setAvilibleFrom] = useState<Date>(new Date());
-  const [open, setOpen] = useState(false);
+  const [shopName, setShopName] = useState<string>('');
+  const [open, setOpen] = useState<boolean>(false);
 
-  const onChange = (event: any, selectedDate: Date | undefined) => {
+  const convertDate = formatDate(avilibleFrom);
+  const handlerButtonDatePicker = (
+    event: any,
+    selectedDate: Date | undefined
+  ) => {
     const currentDate = selectedDate || avilibleFrom; // Default to current value if selectedDate is undefined
     setOpen(false);
     setAvilibleFrom(currentDate);
-  };
-  const date = () => {
-    const year = avilibleFrom.getFullYear();
-    const month = avilibleFrom.getMonth() + 1; // Adding 1 to get the correct month (1 to 12)
-    const day = avilibleFrom.getDate();
-    return `${day}-${month}-${year}`; // Return the formatted date string
   };
   const addProductToList = () => {
     setListProduct((prevList) => [
@@ -38,6 +33,7 @@ const NewProduct = () => {
     ]);
     setPrice('');
     setProductName('');
+    setShopName('');
   };
 
   return (
@@ -61,19 +57,29 @@ const NewProduct = () => {
         />
       </View>
       <View style={styles.containerInput}>
+        <Text>Shop name:</Text>
+        <TextInput
+          onChangeText={setShopName}
+          value={shopName}
+          placeholder='shop name'
+        />
+      </View>
+      <View style={styles.containerInput}>
         <Text>Available from:</Text>
-        <Text>{date()}</Text> {/* Display formatted date */}
+        <Text>{convertDate}</Text>
         <Button title='Set Date' onPress={() => setOpen(true)} />
         {open && (
           <DateTimePicker
             value={avilibleFrom}
             mode='date'
             is24Hour={true}
-            onChange={onChange}
+            onChange={handlerButtonDatePicker}
           />
         )}
       </View>
-      <Button title='Add Product' onPress={addProductToList} />
+      <View style={{ marginVertical: 20 }}>
+        <Button title='Add Product' onPress={addProductToList} />
+      </View>
     </View>
   );
 };
