@@ -42,48 +42,53 @@ const NewProduct = () => {
   };
 
   return (
-    <View style={{ margin: 30 }}>
-      <Text style={{ textAlign: 'center' }}>Add new product to list</Text>
-      <View style={styles.containerInput}>
-        <Text>Product name:</Text>
-        <TextInput
-          onChangeText={setProductName}
-          value={productName}
-          placeholder='Input product name'
-        />
-      </View>
-      <View style={styles.containerInput}>
-        <Text>Price:</Text>
-        <TextInput
-          onChangeText={setPrice}
-          value={price}
-          placeholder='Input price'
-          keyboardType='numeric'
-        />
-      </View>
-      <View style={styles.containerInput}>
-        <Text>Shop name:</Text>
-        <TextInput
-          onChangeText={setShopName}
-          value={shopName}
-          placeholder='Shop name'
-        />
-      </View>
-      <View style={styles.containerInput}>
-        <Text>Available from:</Text>
-        <Text>{convertDate}</Text>
-        <Button title='Set Date' onPress={() => setOpen(true)} />
-        {open && (
-          <DateTimePicker
-            value={avilibleFrom}
-            mode='date'
-            is24Hour={true}
-            onChange={handlerButtonDatePicker}
+    <View style={styles.container}>
+      <Text style={styles.title}>Add new product to list</Text>
+      <View style={styles.wrapperInput}>
+        <View style={styles.containerInput}>
+          <Text style={styles.titleInput}>Product name:</Text>
+          <TextInput
+            onChangeText={setProductName}
+            value={productName}
+            placeholder='Input product name'
+            style={styles.textInput}
           />
-        )}
-      </View>
-      <View style={{ marginVertical: 20 }}>
-        <Button title='Add Product' onPress={addProductToList} />
+        </View>
+        <View style={styles.containerInput}>
+          <Text style={styles.titleInput}>Price:</Text>
+          <TextInput
+            onChangeText={setPrice}
+            value={price}
+            placeholder='Input price'
+            keyboardType='numeric'
+            style={styles.textInput}
+          />
+        </View>
+        <View style={styles.containerInput}>
+          <Text style={styles.titleInput}>Shop name:</Text>
+          <TextInput
+            onChangeText={setShopName}
+            value={shopName}
+            placeholder='Shop name'
+            style={styles.textInput}
+          />
+        </View>
+        <View style={styles.containerInput}>
+          <Text style={styles.titleInput}>Available from:</Text>
+          <Text style={styles.textData}>{convertDate}</Text>
+          <Button title='Set Date' onPress={() => setOpen(true)} />
+          {open && (
+            <DateTimePicker
+              value={avilibleFrom}
+              mode='date'
+              is24Hour={true}
+              onChange={handlerButtonDatePicker}
+            />
+          )}
+        </View>
+        <View style={{ marginVertical: 20 }}>
+          <Button title='Add Product' onPress={addProductToList} />
+        </View>
       </View>
     </View>
   );
