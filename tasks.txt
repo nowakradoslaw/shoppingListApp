@@ -1,0 +1,92 @@
+Aby wprowadzać zmiany w projekcie, ale nie bezpośrednio do głównej gałęzi (main lub master), powinieneś używać gałęzi roboczych. Po wprowadzeniu zmian na gałęzi roboczej możesz je zmergować do głównej gałęzi dopiero po zatwierdzeniu.
+
+Oto jak to zrobić krok po kroku:
+
+1. Stwórz nową gałąź (branch)
+Zamiast pracować na głównej gałęzi, stwórz nową gałąź, w której będziesz wprowadzać zmiany. Gałąź robocza będzie odgałęzieniem od głównej gałęzi i nie będzie miała wpływu na nią, dopóki nie zdecydujesz się na jej zmergowanie.
+
+Aby stworzyć nową gałąź, użyj następującej komendy:
+
+bash
+Kopiuj
+Edytuj
+git checkout -b my-feature-branch
+Zamiast my-feature-branch użyj odpowiedniej nazwy dla swojej gałęzi, np. add-new-feature lub fix-bug.
+
+2. Pracuj na gałęzi roboczej
+Teraz możesz dokonywać zmian w projekcie, a te zmiany będą dotyczyć tylko nowej gałęzi. Gdy skończysz wprowadzać zmiany, dodaj je do repozytorium:
+
+bash
+Kopiuj
+Edytuj
+git add .
+git commit -m "Your commit message"
+3. Wypchnij gałąź roboczą na zdalne repozytorium
+Po dokonaniu commitów na swojej gałęzi roboczej, możesz wypchnąć ją na zdalne repozytorium:
+
+bash
+Kopiuj
+Edytuj
+git push origin my-feature-branch
+4. Utwórz Pull Request (PR)
+Po wypchnięciu swojej gałęzi na zdalne repozytorium (np. GitHub), możesz otworzyć Pull Request (PR), aby zaprezentować zmiany. Pull Request to prośba o połączenie (merge) twojej gałęzi roboczej z główną gałęzią.
+
+Przejdź na stronę swojego repozytorium na GitHub.
+Kliknij na przycisk Compare & Pull Request.
+Wybierz swoją gałąź roboczą (np. my-feature-branch) i główną gałąź (np. main lub master).
+Dodaj tytuł i opis PR.
+Kliknij Create Pull Request.
+Teraz inni (lub Ty, jeśli pracujesz sam) mogą przeglądać zmiany przed ich zatwierdzeniem i połączeniem z główną gałęzią.
+
+5. Merge Pull Request (PR)
+Po przeglądzie zmian (lub po zatwierdzeniu przez Ciebie), możesz połączyć (merge) swoją gałąź roboczą z główną gałęzią.
+
+Na stronie GitHub kliknij przycisk Merge Pull Request.
+Następnie kliknij Confirm Merge.
+6. Usuń gałąź roboczą (opcjonalnie)
+Po zakończeniu procesu łączenia gałęzi, jeśli nie potrzebujesz już swojej gałęzi roboczej, możesz ją usunąć:
+
+bash
+Kopiuj
+Edytuj
+git branch -d my-feature-branch    # Usuwa gałąź lokalnie
+git push origin --delete my-feature-branch  # Usuwa gałąź zdalnie
+7. Zaktualizuj lokalną gałąź main
+Po zmergowaniu swojej gałęzi roboczej z gałęzią main, wróć do głównej gałęzi i pobierz najnowsze zmiany:
+
+bash
+Kopiuj
+Edytuj
+git checkout main   # Przełącz się na gałąź główną
+git pull origin main  # Pobierz najnowsze zmiany
+Podsumowanie:
+Tworzenie nowej gałęzi roboczej:
+
+bash
+Kopiuj
+Edytuj
+git checkout -b my-feature-branch
+Dodawanie zmian na gałęzi roboczej:
+
+bash
+Kopiuj
+Edytuj
+git add .
+git commit -m "Your commit message"
+Wypychanie gałęzi roboczej na GitHub:
+
+bash
+Kopiuj
+Edytuj
+git push origin my-feature-branch
+Tworzenie Pull Request na GitHub i zatwierdzanie go.
+
+Łączenie (merge) gałęzi roboczej z główną gałęzią.
+
+Aktualizowanie lokalnej gałęzi main:
+
+bash
+Kopiuj
+Edytuj
+git pull origin main
+Dzięki temu procesowi będziesz mógł pracować na oddzielnych gałęziach i dopiero po zatwierdzeniu zmian zmergować je do głównej gałęzi, co pozwala na lepsze zarządzanie kodem i większą elastyczność.

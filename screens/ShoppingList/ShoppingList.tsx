@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { FlatList, Text, View, Pressable } from 'react-native';
-import Ionicons from '@react-native-vector-icons/ionicons';
+
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { AppContext } from '@/context/AppProvider';
 
 const ShoppingList = () => {
@@ -57,7 +58,7 @@ const ShoppingList = () => {
             </Text>
 
             <View style={{ flex: 1 }}>
-              <Pressable>
+              <Pressable onPress={() => deleteProduct(index)}>
                 <Ionicons name='trash-outline' color='#ff0000' size={20} />
               </Pressable>
             </View>
