@@ -1,41 +1,57 @@
 import { createContext, useEffect, useState } from 'react';
-import { Product } from '@/types/Product';
+import { ProductSpecialOffert, Product } from '@/types/Product';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const AppContext = createContext<any>(null);
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
+  const [productsSpecialOffer, setProductsSpecialOffer] = useState<
+    ProductSpecialOffert[]
+  >([]);
   const [products, setProducts] = useState<Product[]>([]);
 
-  const storeData = async (newProducts: Product[]) => {
+  const storeData = async (newProducts: ProductSpecialOffert[]) => {
     try {
-      await AsyncStorage.setItem('products', JSON.stringify(newProducts));
+      await AsyncStorage.setItem(
+        'productsSpecialOffer',
+        JSON.stringify(newProducts)
+      );
     } catch (e) {
-      console.error('Error saving products to AsyncStorage:', e);
+      console.error('Error saving productsSpecialOffer to AsyncStorage:', e);
     }
   };
 
   const getData = async () => {
     try {
-      const jsonValue = await AsyncStorage.getItem('products');
+      const jsonValue = await AsyncStorage.getItem('productsSpecialOffer');
       if (jsonValue != null) {
-        setProducts(JSON.parse(jsonValue));
+        setProductsSpecialOffer(JSON.parse(jsonValue));
       }
     } catch (e) {
-      console.error('Error loading products from AsyncStorage:', e);
+      console.error('Error loading productsSpecialOffer from AsyncStorage:', e);
     }
   };
 
-  const addProduct = (newProduct: Product) => {
-    const updatedProducts = [...products, newProduct];
-    setProducts(updatedProducts);
-    storeData(updatedProducts);
+  const addProductSpecialOffert = (newProduct: ProductSpecialOffert) => {
+    const updatedProductsSpecialOffer = [...productsSpecialOffer, newProduct];
+    setProductsSpecialOffer(updatedProductsSpecialOffer);
+    storeData(updatedProductsSpecialOffer);
   };
 
+  const deleteProductSpecialOffert = (index: number) => {
+    const updatedProductsSpecialOffer = productsSpecialOffer.filter(
+      (_, i) => i !== index
+    );
+    setProductsSpecialOffer(updatedProductsSpecialOffer);
+    storeData(updatedProductsSpecialOffer);
+  };
+  const addProduct = (newPoduct: Product) => {
+    const updatedProducts = [...products, newPoduct];
+    setProducts(updatedProducts);
+  };
   const deleteProduct = (index: number) => {
     const updatedProducts = products.filter((_, i) => i !== index);
     setProducts(updatedProducts);
-    storeData(updatedProducts);
   };
 
   useEffect(() => {
@@ -43,7 +59,17 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ products, addProduct, deleteProduct }}>
+    <AppContext.Provider
+      value={{
+        addProductSpecialOffert,
+        deleteProductSpecialOffert,
+        products,
+        productsSpecialOffer,
+        setProducts,
+        addProduct,
+        deleteProduct,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
