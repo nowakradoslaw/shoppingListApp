@@ -1,8 +1,9 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 //components
 import HomeScreen from '@/screens/HomeScreen/HomeScreen';
-import NewProduct from '@/screens/NewProduct/NewProduct';
-import ProductList from '@/screens/ShoppingList/ShoppingList';
+import NewProduct from '@/screens/NewProductSpecialOffert/NewProductSpecialOffert';
+import SpecialOffer from '@/screens/SpecialOffer/SpecialOffer';
+import ShoppingList from '@/screens/ShoppingList/ShoppingList';
 
 const Drawer = createDrawerNavigator();
 
@@ -20,9 +21,14 @@ const AppNavigator = () => {
         options={{ title: 'New product' }}
       />
       <Drawer.Screen
-        name='Product list'
-        component={ProductList}
-        options={{ title: 'Product list' }}
+        name='Special offer'
+        component={SpecialOffer}
+        options={{ title: 'Special offer' }}
+      />
+      <Drawer.Screen
+        name='Shopping list'
+        component={ShoppingList}
+        options={{ title: 'Shopping list' }}
       />
     </Drawer.Navigator>
   );
