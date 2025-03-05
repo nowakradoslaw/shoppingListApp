@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '80%',
+    marginBottom: 20,
   },
   inputName: {
     fontSize: 20,
@@ -40,7 +41,7 @@ export const styles = StyleSheet.create({
   inputText: {
     fontSize: 20,
     borderBottomWidth: 1,
-    borderColor: 'white',
+    borderColor: 'black',
     flex: 1,
   },
   addProductButton: {
