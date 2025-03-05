@@ -1,8 +1,12 @@
-import { View, Text } from 'react-native';
 import MainMenu from '@/navigation/MainMenu';
+import AppProvider from '@/context/AppProvider';
 
 const App = () => {
-  return <MainMenu></MainMenu>;
+  return (
+    <AppProvider>
+      <MainMenu />
+    </AppProvider>
+  );
 };
 
 export default App;
