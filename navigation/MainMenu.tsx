@@ -6,6 +6,7 @@ import { Button } from '@react-navigation/elements';
 
 //components
 import HomeScreen from '@/screens/HomeScreen/HomeScreen';
+import ProductsList from '@/screens/ProductsList/ProductsList';
 
 function NotificationsScreen() {
   const navigation = useNavigation();
@@ -23,7 +24,7 @@ export default function MainMenu() {
   return (
     <Drawer.Navigator initialRouteName='Home'>
       <Drawer.Screen name='Home' component={HomeScreen} />
-      <Drawer.Screen name='Notifications' component={NotificationsScreen} />
+      <Drawer.Screen name='Products list' component={ProductsList} />
     </Drawer.Navigator>
   );
 }
