@@ -1,18 +1,24 @@
 import React from 'react';
 import { Product } from '@/types/Product';
+import { SpecialOffertProduct } from '@/types/SpecialOffertProduct';
 import { AppContextType } from '@/types/AppContextType';
-// Define the context type
 
-// Provide a default value
 export const AppContext = React.createContext<AppContextType>({
   products: [],
   setProducts: () => {},
   addProductToProducts: () => {},
   deleteProductFromProducts: () => {},
+  specialOffertProducts: [],
+  setSpecialOffertsProducts: () => {},
+  addSpecialOffertProductToSpecialOffertProducts: () => {},
+  removeSpecialOfferProduct: () => {},
 });
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [products, setProducts] = React.useState<Product[]>([]);
+  const [specialOffertProducts, setSpecialOffertsProducts] = React.useState<
+    SpecialOffertProduct[]
+  >([]);
 
   const addProductToProducts = (newProduct: Product) => {
     setProducts((prevProducts) => [...prevProducts, newProduct]);
@@ -22,6 +28,17 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
       prevState.filter((product) => product.id !== id)
     );
   };
+  const addSpecialOffertProductToSpecialOffertProducts = (
+    newProduct: SpecialOffertProduct
+  ) => {
+    setSpecialOffertsProducts((prevProducts) => [...prevProducts, newProduct]);
+  };
+  const removeSpecialOfferProduct = (id: string) => {
+    setSpecialOffertsProducts((prevState) =>
+      prevState.filter((product) => product.id !== id)
+    );
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -29,6 +46,10 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
         setProducts,
         addProductToProducts,
         deleteProductFromProducts,
+        specialOffertProducts,
+        setSpecialOffertsProducts,
+        addSpecialOffertProductToSpecialOffertProducts,
+        removeSpecialOfferProduct,
       }}
     >
       {children}
