@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   container: {
     width: '70%',
-    flex: 1,
+    flex: 0.9,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
@@ -25,15 +25,15 @@ export const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'column',
     alignItems: 'center',
-    flex: 2,
-    marginTop: 50,
+    flex: 1,
+    marginTop: 40,
   },
   inputTextWrapper: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     width: '80%',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   inputName: {
     fontSize: 20,
@@ -47,6 +47,7 @@ export const styles = StyleSheet.create({
   addProductButton: {
     width: '90%',
     padding: 10,
+    marginBottom: 20,
     backgroundColor: 'blue',
     borderRadius: 15,
     justifyContent: 'center',
