@@ -7,6 +7,7 @@ import uuid from 'react-native-uuid';
 import { SpecialOffertProduct } from '@/types/SpecialOffertProduct';
 import { AppContext } from '@/context/AppProvider';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const SpecialOffertsModal: React.FC<SpecialOffertsModalProps> = ({
   modalVisible,
@@ -54,10 +55,9 @@ const SpecialOffertsModal: React.FC<SpecialOffertsModalProps> = ({
             <View style={styles.inputTextWrapper}>
               <Text style={styles.inputName}>Avaible from: </Text>
               <Text>{avaibleFrom}</Text>
-              <Pressable
-                onPress={() => setDataPickerIsOpen(true)}
-                style={{ width: 50, height: 50, backgroundColor: 'red' }}
-              ></Pressable>
+              <Pressable onPress={() => setDataPickerIsOpen(true)}>
+                <Ionicons name='calendar-outline' size={32} color='black' />
+              </Pressable>
               {dataPickerIsOpne && (
                 <DateTimePicker
                   mode='date'
@@ -66,7 +66,7 @@ const SpecialOffertsModal: React.FC<SpecialOffertsModalProps> = ({
                   onChange={(event, selectedDate) => {
                     if (selectedDate) {
                       setDataPickerIsOpen(false);
-                      setAvaibleFrom(selectedDate.toLocaleDateString()); // Poprawnie ustawiamy datę
+                      setAvaibleFrom(selectedDate.toLocaleDateString());
                     }
                   }}
                 />
