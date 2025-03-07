@@ -30,7 +30,7 @@ const SpecialOfferts = () => {
         <Text style={{ flex: 1, textAlign: 'center' }}>Price</Text>
         <Text style={{ flex: 1, textAlign: 'center' }}>Shop</Text>
         <Text style={{ flex: 1, textAlign: 'center' }}>Date</Text>
-        <Text style={{ flex: 1, textAlign: 'center' }}></Text>
+        <Text style={{ flex: 1, textAlign: 'center' }}>#</Text>
       </View>
       <FlatList
         data={specialOffertProducts}
@@ -44,7 +44,6 @@ const SpecialOfferts = () => {
             <Text style={{ textAlign: 'center' }}>{item.shop}</Text>
             <Text style={{ textAlign: 'center' }}>{item.avaibleFrom}</Text>
             <Pressable onPress={() => removeSpecialOfferProduct(item.id)}>
-              :
               <Ionicons name='trash-outline' color={'red'} size={20} />
             </Pressable>
           </View>
