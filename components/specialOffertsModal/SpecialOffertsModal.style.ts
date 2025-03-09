@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
     width: '90%',
     padding: 10,
     marginBottom: 20,
-    backgroundColor: 'blue',
+    backgroundColor: '#00aeef',
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
   closeButton: {
     width: '50%',
     padding: 10,
-    backgroundColor: 'blue',
+    backgroundColor: 'red',
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',

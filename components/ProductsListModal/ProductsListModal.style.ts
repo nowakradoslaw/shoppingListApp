@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
   addProductButton: {
     width: '90%',
     padding: 10,
-    backgroundColor: 'blue',
+    backgroundColor: '#00aeef',
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
