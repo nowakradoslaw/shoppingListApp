@@ -12,6 +12,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 const SpecialOffertsModal: React.FC<SpecialOffertsModalProps> = ({
   modalVisible,
   setModalVisible,
+  product,
+  setProduct,
 }) => {
   const { addSpecialOffertProductToSpecialOffertProducts } =
     React.useContext(AppContext);
@@ -30,7 +32,7 @@ const SpecialOffertsModal: React.FC<SpecialOffertsModalProps> = ({
             <View style={styles.inputTextWrapper}>
               <Text style={styles.inputName}>Product: </Text>
               <TextInput
-                value={productName}
+                value={product ? product : productName}
                 style={styles.inputText}
                 onChangeText={(text) => setProductName(text)}
               />
@@ -54,8 +56,11 @@ const SpecialOffertsModal: React.FC<SpecialOffertsModalProps> = ({
             </View>
             <View style={styles.inputTextWrapper}>
               <Text style={styles.inputName}>Avaible from: </Text>
-              <Text>{avaibleFrom}</Text>
-              <Pressable onPress={() => setDataPickerIsOpen(true)}>
+              <Text style={styles.inputName}>{avaibleFrom}</Text>
+              <Pressable
+                onPress={() => setDataPickerIsOpen(true)}
+                style={{ marginHorizontal: 5 }}
+              >
                 <Ionicons name='calendar-outline' size={32} color='black' />
               </Pressable>
               {dataPickerIsOpne && (
@@ -78,7 +83,7 @@ const SpecialOffertsModal: React.FC<SpecialOffertsModalProps> = ({
             onPress={() => {
               const newProduct: SpecialOffertProduct = {
                 id: uuid.v4(),
-                name: productName,
+                name: product ? product : productName,
                 price: productPrice,
                 shop: shopName,
                 avaibleFrom: avaibleFrom,
