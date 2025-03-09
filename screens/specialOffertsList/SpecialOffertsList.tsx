@@ -19,31 +19,51 @@ const SpecialOfferts = () => {
       <View
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-evenly',
+          justifyContent: 'space-between',
           borderBottomWidth: 1,
           borderColor: 'black',
           marginBottom: 30,
         }}
       >
-        <Text style={{ flex: 1, textAlign: 'center' }}>#</Text>
-        <Text style={{ flex: 1, textAlign: 'center' }}>Product</Text>
-        <Text style={{ flex: 1, textAlign: 'center' }}>Price</Text>
-        <Text style={{ flex: 1, textAlign: 'center' }}>Shop</Text>
-        <Text style={{ flex: 1, textAlign: 'center' }}>Date</Text>
-        <Text style={{ flex: 1, textAlign: 'center' }}>#</Text>
+        <Text style={{ textAlign: 'center', flex: 1 }}>#</Text>
+        <Text style={{ textAlign: 'center', flex: 1 }}>Product</Text>
+        <Text style={{ textAlign: 'center', flex: 1 }}>Price</Text>
+        <Text style={{ textAlign: 'center', flex: 1 }}>Shop</Text>
+        <Text style={{ textAlign: 'center', flex: 1 }}>Date</Text>
+        <Text style={{ textAlign: 'center', flex: 1 }}>#</Text>
       </View>
       <FlatList
         data={specialOffertProducts}
         renderItem={({ item, index }) => (
           <View
-            style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}
           >
-            <Text style={{ textAlign: 'center' }}>{index + 1}. </Text>
-            <Text style={{ textAlign: 'center' }}>{item.name}</Text>
-            <Text style={{ textAlign: 'center' }}>{item.price}</Text>
-            <Text style={{ textAlign: 'center' }}>{item.shop}</Text>
-            <Text style={{ textAlign: 'center' }}>{item.avaibleFrom}</Text>
-            <Pressable onPress={() => removeSpecialOfferProduct(item.id)}>
+            <Text style={{ flex: 1, textAlign: 'center' }}>{index + 1}.</Text>
+            <Text style={{ textAlign: 'center', flex: 1 }}>{item.name}</Text>
+            <Text style={{ textAlign: 'center', flex: 1 }}>{item.price}</Text>
+            <Text
+              style={{
+                textAlign: 'center',
+                flex: 1,
+              }}
+            >
+              {item.shop}
+            </Text>
+            <Text
+              style={{
+                textAlign: 'center',
+                flex: 1,
+              }}
+            >
+              {item.avaibleFrom}
+            </Text>
+            <Pressable
+              onPress={() => removeSpecialOfferProduct(item.id)}
+              style={{ flex: 1, alignItems: 'center' }}
+            >
               <Ionicons name='trash-outline' color={'red'} size={20} />
             </Pressable>
           </View>
