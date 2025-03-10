@@ -14,6 +14,8 @@ export const styles = StyleSheet.create({
   headingWrapper: {
     flexDirection: 'row',
     marginVertical: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
   },
   headingItem: {
     textAlign: 'center',

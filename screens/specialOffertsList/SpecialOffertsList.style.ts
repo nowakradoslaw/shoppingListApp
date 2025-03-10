@@ -22,17 +22,16 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     right: 20,
-    width: 80,
-    height: 80,
-    backgroundColor: 'blue',
-    borderRadius: 100,
+    width: 60, // Ensure width and height are equal
+    height: 60, // This ensures a perfect circle
+    backgroundColor: '#1E6738',
+    borderRadius: 30, // Should be at least half of width/height
     display: 'flex',
-    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
     color: 'white',
-    fontSize: 60,
+    fontSize: 40,
   },
 });
